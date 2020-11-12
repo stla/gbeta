@@ -1,0 +1,59 @@
+---
+title: "Bayesian applications"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Bayesian applications}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The *generalized Beta distribution* $\beta_\tau(c, d, \kappa)$ is a continuous 
+distribution on $(0,1)$ with density function proportional to
+$$
+{u}^{c-1}{(1-u)}^{d-1}{\bigl(1+(\tau-1)u\bigr)}^\kappa, \quad u \in (0,1),
+$$
+with parameters $c>0$, $d>0$, $\kappa \in \mathbb{R}$ and $\tau>0$.
+
+The *(scaled) generalized Beta prime distribution* 
+$\beta'_\tau(c, d, \kappa, \sigma)$ is the distribution of the random variable
+$\sigma \times \tfrac{U}{1-U}$ where $U \sim \beta_\tau(c, d, \kappa)$.
+
+## Application to the Bayesian binomial model
+
+Assume a $\beta_\tau(c, d, \kappa)$ prior distribution is assigned to the 
+success probability parameter $\theta$ of the binomial model with $n$ trials. 
+Then the posterior distribution of $\theta$ after $x$ successes have been
+observed is $(\theta \mid x) \sim \beta_\tau(c+x, d+n-x, \kappa)$.
+
+## Application to the Bayesian 'two Poisson samples' model
+
+Let the statistical model given by two independent observations
+$$
+x \sim \mathcal{P}(\lambda T), \qquad y \sim \mathcal{P}(\mu S),
+$$
+where $S$ and $T$ are known design parameters and $\mu$ and $\lambda$ are 
+the unknown parameters. 
+
+Assign the following independent prior distributions on $\mu$ and 
+$\phi := \tfrac{\lambda}{\mu}$ (the relative risk):
+$$
+\mu \sim \mathcal{G}(a,b), \quad \phi \sim \beta'(c, d, \sigma),
+$$
+where $\mathcal{G}(a,b)$ is the Gamma distribution with shape parameter $a$ 
+and rate parameter $b$, and $\beta'(c, d, \sigma)$ is the scaled Beta prime 
+distribution with shape parameters $c$ and $d$ and scale $\sigma$, that is the 
+distribution of the random variable $\sigma \times \tfrac{U}{1-U}$ where 
+$U \sim \beta(c, d)$.
+
+Then the posterior distribution of $\phi$ is 
+$$
+(\phi \mid x, y) \sim \beta'_{\rho/\sigma}(c+x, a+d+y, c+d, \rho)
+$$
+where $\rho = \tfrac{b+T}{S}$.

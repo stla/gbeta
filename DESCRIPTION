@@ -4,9 +4,13 @@ Title: Generalized Beta and Beta Prime Distributions
 Version: 0.1.0
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
-Description: Density, distribution function, and random generation for the generalized Beta and Beta prime distributions. The family of generalized Beta distributions is conjugate for the Bayesian binomial model, and the family of generalized Beta prime distributions is conjugate for the Bayesian 'two Poisson samples' model. 
+Description: Density, distribution function, and random generation for the generalized Beta and Beta prime distributions. The family of generalized Beta distributions is conjugate for the Bayesian binomial model, and the generalized Beta prime distribution is the posterior distribution of the relative risk in the Bayesian 'two Poisson samples' model when a Gamma prior is assigned to the Poisson rate of the reference group and a Beta prime prior is assigned to the relative risk.
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.5), gsl, Runuran
 LinkingTo: Rcpp, RcppNumerical, RcppEigen
 Encoding: UTF-8
 RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
