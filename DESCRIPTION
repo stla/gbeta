@@ -14,3 +14,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/stla/gbeta
+BugReports: https://github.com/stla/gbeta/issues
