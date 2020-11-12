@@ -9,7 +9,7 @@ Gauss2F1 <- function(a, b, c, x){
 }
 
 #' @importFrom gsl hyperg_2F1 lnpoch
-#' @importFrom Runuran unuran.discr.new unuran.new ur
+#' @importFrom Runuran unuran.discr.new unuran.new unuran.cont.new ur
 NULL
 
 pmf_unnormalized <- function(k, c, d, kappa, tau){
