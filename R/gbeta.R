@@ -10,7 +10,7 @@
 #' @param log logical, whether to return the log-density
 #' @param method the method of random generation, \code{"mixture"} or 
 #'   \code{"arou"}; only a positive \code{kappa} is allowed for the 
-#'   \code{"mixture"} method
+#'   \code{"mixture"} method, but this method is faster
 #'   
 #' @references 
 #' \itemize{
