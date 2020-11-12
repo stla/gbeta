@@ -26,6 +26,9 @@
 #'     <doi:10.3102/10769986009002163>
 #' }
 #' 
+#' @examples library(gbeta)
+#' curve(dgbeta(x, 4, 12, 10, 0.01), axes = FALSE, lwd = 2)
+#' axis(1)
 #' 
 #' @rdname GBeta
 #' @name GBeta

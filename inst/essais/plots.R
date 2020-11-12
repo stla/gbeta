@@ -22,3 +22,5 @@ axis(1)
 curve(dgbetap(x, 1, 12, 8, 0.01, 5), to = 5, axes = FALSE, xlab = NA, ylab = NA, lwd = 2)
 axis(1)
 
+curve(pgbetap(x, 4, 12, 10, 0.01), to = 10)
+

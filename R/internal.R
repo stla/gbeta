@@ -48,10 +48,10 @@ Ksampler <- function(n, c, d, kappa, tau){
   ur(unuran, n) 
 }
 
-unuran_gbp_arou <- function(c, d, kappa, tau){
+unuran_gbetap_arou <- function(c, d, kappa, tau){
   distr <- unuran.cont.new(
     #cdf = function(q) pgbp(q, c, d, kappa, tau),
-    pdf = function(phi) dgbp(phi, c, d, kappa, tau, log = TRUE),
+    pdf = function(phi) dgbetap(phi, c, d, kappa, tau, log = TRUE),
     dpdf = function(x) (c-1)/x + (kappa-c-d)/(1+x) - kappa*tau/(1+tau*x),
     islog = TRUE,
     lb = 0, ub = Inf

@@ -35,6 +35,12 @@ except \code{kappa} which can take any value}
 Density, distribution function, and random generation for the 
   generalized Beta prime distribution.
 }
+\examples{
+library(gbeta)
+curve(dgbetap(x, 4, 12, 10, 0.01), to = 10, axes = FALSE, lwd = 2)
+axis(1)
+  
+}
 \references{
 \itemize{
   \item Stéphane Laurent. 
