@@ -5,6 +5,7 @@
 \alias{dgbeta}
 \alias{pgbeta}
 \alias{rgbeta}
+\alias{qgbeta}
 \title{Generalized Beta distribution}
 \usage{
 dgbeta(u, c, d, kappa, tau, log = FALSE)
@@ -12,6 +13,8 @@ dgbeta(u, c, d, kappa, tau, log = FALSE)
 pgbeta(q, c, d, kappa, tau)
 
 rgbeta(n, c, d, kappa, tau, method = "mixture")
+
+qgbeta(p, c, d, kappa, tau)
 }
 \arguments{
 \item{u}{numeric vector}
@@ -28,10 +31,12 @@ except \code{kappa} which can take any value}
 \item{method}{the method of random generation, \code{"mixture"} or 
 \code{"arou"}; only a positive \code{kappa} is allowed for the 
 \code{"mixture"} method, but this method is faster}
+
+\item{p}{numeric vector of probabilities}
 }
 \description{
-Density, distribution function, and random generation for the 
-  generalized Beta distribution.
+Density, distribution function, quantile function, and random 
+  generation for the generalized Beta distribution.
 }
 \examples{
 library(gbeta)

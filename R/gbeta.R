@@ -1,9 +1,10 @@
 #' Generalized Beta distribution
-#' @description Density, distribution function, and random generation for the 
-#'   generalized Beta distribution.
+#' @description Density, distribution function, quantile function, and random 
+#'   generation for the generalized Beta distribution.
 #'   
 #' @param u numeric vector
 #' @param q numeric vector of quantiles
+#' @param p numeric vector of probabilities
 #' @param n positive integer, the desired number of simulations
 #' @param c,d,kappa,tau parameters; they must be strictly positive numbers, 
 #'   except \code{kappa} which can take any value
@@ -29,6 +30,9 @@
 #' @examples library(gbeta)
 #' curve(dgbeta(x, 4, 12, 10, 0.01), axes = FALSE, lwd = 2)
 #' axis(1)
+#' 
+#' @importFrom stats qbeta
+#' @importFrom Runuran uq
 #' 
 #' @rdname GBeta
 #' @name GBeta
@@ -71,4 +75,15 @@ pgbeta <- function(q, c, d, kappa, tau){
 rgbeta <- function(n, c, d, kappa, tau, method = "mixture"){ 
   betap <- rgbetap(n, c, d, kappa, tau, scale = 1, method = method)
   betap / (1 + betap)
+}
+
+#' @rdname GBeta
+#' @export
+qgbeta <- function(p, c, d, kappa, tau){
+  stopifnot(all(p >= 0 & p <= 1))
+  stopifnot(c > 0, d > 0, tau > 0)
+  if(kappa == 0 || tau == 1){
+    return(qbeta(p, c, d))
+  }
+  uq(unuran_gbeta_pinv(c, d, kappa, tau), p)
 }

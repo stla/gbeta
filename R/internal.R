@@ -9,22 +9,29 @@ Gauss2F1 <- function(a, b, c, x){
 }
 
 #' @importFrom gsl hyperg_2F1 lnpoch
-#' @importFrom Runuran unuran.discr.new unuran.new unuran.cont.new ur
+#' @importFrom Runuran unuran.discr.new unuran.new unuran.cont.new ur pinv.new
 NULL
 
 pmf_unnormalized <- function(k, c, d, kappa, tau){
-  out <- numeric(length(k))
-  positive <- k >= 0
-  k <- k[positive]
-  out[positive] <- 
-    if(tau < 1){
-      exp(k*log(1-tau) - lfactorial(k) + 
-            lnpoch(c+d-kappa,k) + lnpoch(d,k) - lnpoch(c+d,k)) 
-    }else{
-      exp(k*log(1-1/tau) - lfactorial(k) + 
-            lnpoch(c+d-kappa,k) + lnpoch(c,k) - lnpoch(c+d,k))
-    }
-  out
+  # out <- numeric(length(k))
+  # positive <- k >= 0
+  # k <- k[positive]
+  # out[positive] <- 
+  #   if(tau < 1){
+  #     exp(k*log(1-tau) - lfactorial(k) + 
+  #           lnpoch(c+d-kappa,k) + lnpoch(d,k) - lnpoch(c+d,k)) 
+  #   }else{
+  #     exp(k*log(1-1/tau) - lfactorial(k) + 
+  #           lnpoch(c+d-kappa,k) + lnpoch(c,k) - lnpoch(c+d,k))
+  #   }
+  # out
+  if(tau < 1){
+    exp(k*log(1-tau) - lfactorial(k) + 
+          lnpoch(c+d-kappa,k) + lnpoch(d,k) - lnpoch(c+d,k)) 
+  }else{
+    exp(k*log(1-1/tau) - lfactorial(k) + 
+          lnpoch(c+d-kappa,k) + lnpoch(c,k) - lnpoch(c+d,k))
+  }
 }
 
 NormalizingConstant <- function(c, d, kappa, tau){
@@ -57,4 +64,11 @@ unuran_gbetap_arou <- function(c, d, kappa, tau){
     lb = 0, ub = Inf
   )
   unuran.new(distr, method = "arou")
+}
+
+unuran_gbeta_pinv <- function(c, d, kappa, tau){
+  pinv.new(
+    cdf = function(x) pgbeta(x, c, d, kappa, tau),
+    lb = 0, ub = 1
+  )
 }

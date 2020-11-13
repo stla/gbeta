@@ -9,7 +9,7 @@ rbetaprime <- function(n, c, d, lambda){
 
 dbetaprime <- function(x, c, d, lambda, log){
   stopifnot(lambda > 0)
-  if(log){ # TODO: handle x < 0
+  if(log){ # TODO: handle x < 0 - DONE in dgbetap
     log(lambda) - 2*log(lambda+x) + dbeta(x/(lambda + x), c, d, log = TRUE)
   }else{
     lambda/(lambda + x)^2 * dbeta(x/(lambda + x), c, d)
