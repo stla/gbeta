@@ -3,11 +3,12 @@
 NULL
 
 #' Generalized Beta prime distribution
-#' @description Density, distribution function, and random generation for the 
-#'   generalized Beta prime distribution.
+#' @description Density, distribution function, quantile function, and random 
+#'   generation for the generalized Beta prime distribution.
 #'   
 #' @param x numeric vector
 #' @param q numeric vector of quantiles
+#' @param p numeric vector of probabilities
 #' @param n positive integer, the desired number of simulations
 #' @param c,d,kappa,tau parameters; they must be strictly positive numbers, 
 #'   except \code{kappa} which can take any value
@@ -103,4 +104,11 @@ rgbetap <- function(n, c, d, kappa, tau, scale = 1, method = "mixture"){
   }else if(method == "arou"){
     scale * ur(unuran_gbetap_arou(c, d, kappa, tau), n)
   }
+}
+
+#' @rdname GBetaP
+#' @export
+qgbetap <- function(p, c, d, kappa, tau, scale = 1){
+  q <- qgbeta(p, c, d, kappa, tau)
+  scale * q / (1 - q)
 }

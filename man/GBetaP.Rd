@@ -5,6 +5,7 @@
 \alias{dgbetap}
 \alias{pgbetap}
 \alias{rgbetap}
+\alias{qgbetap}
 \title{Generalized Beta prime distribution}
 \usage{
 dgbetap(x, c, d, kappa, tau, scale = 1, log = FALSE)
@@ -12,6 +13,8 @@ dgbetap(x, c, d, kappa, tau, scale = 1, log = FALSE)
 pgbetap(q, c, d, kappa, tau, scale = 1)
 
 rgbetap(n, c, d, kappa, tau, scale = 1, method = "mixture")
+
+qgbetap(p, c, d, kappa, tau, scale = 1)
 }
 \arguments{
 \item{x}{numeric vector}
@@ -30,10 +33,12 @@ except \code{kappa} which can take any value}
 \item{method}{the method of random generation, \code{"mixture"} or 
 \code{"arou"}; only a positive \code{kappa} is allowed for the 
 \code{"mixture"} method, but this method is faster}
+
+\item{p}{numeric vector of probabilities}
 }
 \description{
-Density, distribution function, and random generation for the 
-  generalized Beta prime distribution.
+Density, distribution function, quantile function, and random 
+  generation for the generalized Beta prime distribution.
 }
 \examples{
 library(gbeta)
