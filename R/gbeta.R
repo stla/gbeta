@@ -40,7 +40,7 @@
 dgbeta <- function(u, c, d, kappa, tau, log = FALSE){ 
   stopifnot(c > 0, d > 0, tau > 0)
   out <- numeric(length(u))
-  outside01 <- u < 0 || u > 1
+  outside01 <- u < 0 | u > 1
   out[outside01] <- ifelse(log, -Inf, 0)
   inside01 <- !outside01
   if(any(inside01)){
